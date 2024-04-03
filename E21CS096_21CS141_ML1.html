@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+ <html>
+ <head>
+ <title>Movie Recommender</title>
+ <script>
+ const movies = [
+ { title: "Bahubali 1", ratings: [5, 5, 4, 5] },
+ { title: "Leo", ratings: [5, 5, 5, 5] },
+ { title: "Thunivu", ratings: [4, 5, 4, 5] },
+{ title: "Kanguva", ratings: [5, 5, 5, 4] },
+{ title: "Captain miller", ratings: [5, 5, 5, 4] },
+ ];
+ function recommendMovies(userRatings) {
+ const recommendations = [];
+ for (const movie of movies) {
+ let similarityScore = 0;
+ for (let i = 0; i < userRatings.length; i++) {
+ similarityScore += userRatings[i] * movie.ratings[i];
+ }
+ recommendations.push({ title: movie.title, score: similarityScore });
+ }
+ recommendations.sort((a, b) => b.score- a.score);
+ return recommendations.slice(0, 3); 
+ }
+ const userRatings = [5, 5, 4]; 
+ const recommendations = recommendMovies(userRatings);
+ console.log("Recommended movies for you:");
+ for (const recommendation of recommendations) {
+console.log(recommendation.title);
+
+ }
+ </script>
+ </head>
+ <body>
+<H1 align="center" color="red">MOVIE RECOMMENDATION SYSTEM</H1>
+ 
+ </body>
+ </html>
